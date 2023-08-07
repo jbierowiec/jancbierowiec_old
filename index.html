@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Jan C. Bierowiec</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+	<style>
+		/* Default Settings */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Navigation Settings */
+		header {
+			color: #fff;
+			padding: 10px;
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+		}
+
+		.dropdown {
+			margin-left: auto;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: white;
+			border: 1px solid black;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+		}
+
+		.dropdown-content a {
+			color: rgb(169, 169, 169);
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+		.dropdown-content a:hover {
+			background-color: #f1f1f1;
+		}
+
+		#dropbtn, #modebtn {
+			background-color: transparent;
+			padding: 10px;
+			border: none;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		.dark-mode-btn {
+  			background-color: #333;
+  			color: #fff;
+		}
+
+		.light-mode {
+  			background-color: #fff;
+  			color: #333;
+		}
+
+		.dark-mode {
+  			background-color: #333;
+  			color: #fff;
+		}
+
+		/* Content on the site */
+		h1 {
+			text-align: center;
+		}
+
+		hr, .about, .projects, .contact {
+			max-width: 1000px;
+			margin: auto;
+			width: 70%;
+		}
+
+		.about .images {
+			width: 70%;
+			margin: auto;
+			max-width: 1000px;
+		}
+
+		.about .images img {
+			width: 100%;
+		}	
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		a:hover {
+			color: #a1a9a17d;
+		}
+
+		@media (min-width: 650px) {
+			.about {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	</style>
+</head>
+<body class="light-mode">
+	<header>
+		<nav>
+			<div class="dropdown">
+				<button id="modebtn" onclick="toggleMode()">
+					<i class="fas fa-sun"></i>
+					<i class="fas fa-moon"></i>
+				</button>
+				<button id="dropbtn" onclick="toggleDropdown()">Languages</button>
+				<div class="dropdown-content" id="dropdown-content">
+					<a href="#" id="en">English</a>
+					<a href="#" id="es">Spanish</a>
+					<a href="#" id="de">German</a>
+					<a href="#" id="pl">Polish</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<br>
+	<h1>Jan C. Bierowiec</h1>
+	<br>
+	<hr>
+	<br>
+	<div class="about">
+		<div class="images">
+			<img src="unknown-man.png" alt="Jan C. Bierowiec">
+		</div>
+		<div class="content">
+			<h2>About me</h2>
+			<p>I am currently a student at University studying Engineering Physics and Computer Science. My interests lie in Website Development, Physics Education, Computational Physics and Robotics.</p>
+		</div>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<div class="projects">
+		<h2>Projects</h2>
+		<p>Most of my smaller projects can be viewed on my <a id="a-github" href="https://github.com/jbierowiec" target="_blank">GitHub</a> profile, however I have worked on and am currently working on a couple of larger projects. Those can be accessed by directly contacting me for my resume via email.</p>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<div class="contact">
+		<h2>Contact</h2>
+		<p>If you are interested in the larger projects I have worked on and am working on, or if you are interested in finding out more about me, my skillset, and what I do outside of academia, I can be contacted at <a id="a-email" href="mailto:jbierowiec3@gmail.com">jbierowiec3@gmail.com</a>.</p>
+	</div>
+	<br>
+	<hr>
+	<br>
+
+	<script>
+        let currentLanguage = 'en'
+        let previousContent
+      
+        const switchLanguage = (language, content) => {
+		  	const aboutTitle = document.querySelector('.about .content h2')
+          	const aboutContent = document.querySelector('.about .content p')
+		  	const projectTitle = document.querySelector('.projects h2')
+		  	const projectContent = document.querySelector('.projects p')
+			const contactTitle = document.querySelector('.contact h2')
+			const contactContent = document.querySelector('.contact p')
+          	switch (language) {
+            	case 'pl':
+			  		aboutTitle.innerText = 'O mnie'
+              		aboutContent.innerText = 'Obecnie jestem studentem na Uniwersytecie uczący się fizyki inżynieryjnej oraz informatyki. Moje zainteresowania naukowe to tworzenie stron internetowych, edukacja fizyki, fizykę obliczeniową i robotyka.'
+			  		projectTitle.innerText = 'Projekty'
+					projectContent.innerHTML = 'Większość moich mniejszych projektów można obejrzeć na moim profilu <a id="a-github" href="https://github.com/jbierowiec" target="_blank">GitHub</a>, jednak pracowałem i obecnie pracuję nad kilkoma większymi projektami. Dostęp do nich można uzyskać, kontaktując się bezpośrednio ze mną w sprawie mojego CV za pośrednictwem poczty elektronicznej.'
+					contactTitle.innerText = 'Kontakt'
+					contactContent.innerHTML = 'Jeśli jesteś zainteresowany większymi projektami, nad którymi pracowałem i nad którymi pracuję, lub jeśli chcesz dowiedzieć się więcej o mnie, moich umiejętnościach i tym, co robię poza środowiskiem akademickim, można się ze mną skontaktować pod adresem <a id="a-email" href="mailto:jbierowiec3@gmail.com">jbierowiec3@gmail.com</a>.'
+              		break
+            	case 'es':
+			  		aboutTitle.innerText = 'Acerca de mí'
+              		aboutContent.innerText = 'Actualmente soy estudiante en la Universidad de Ingeniería Física y Ciencias de la Computación. Mis intereses radican en el desarrollo de sitios web, la educación física, la física computacional y la robótica.'
+					projectTitle.innerText = 'Proyectos'
+					projectContent.innerHTML = 'La mayoría de mis proyectos más pequeños se pueden ver en mi perfil de <a id="a-github" href="https://github.com/jbierowiec" target="_blank">GitHub</a>; sin embargo, he trabajado y estoy trabajando actualmente en un par de proyectos más grandes. Se puede acceder a ellos comunicándose directamente conmigo para recibir mi currículum por correo electrónico.'
+					contactTitle.innerText = 'Contacto'
+					contactContent.innerHTML = 'Si está interesado en los proyectos más grandes en los que he trabajado y estoy trabajando, o si está interesado en saber más sobre mí, mi conjunto de habilidades y lo que hago fuera de la academia, puede contactarme en <a id="a-email" href="mailto:jbierowiec3@gmail.com">jbierowiec3@gmail.com</a>.'
+              		break
+				case 'de':
+					aboutTitle.innerText = 'Über mich'
+					aboutContent.innerText = 'Ich bin derzeit Student an der Universität und studiere Technische Physik und Informatik. Meine Interessen liegen in der Website-Entwicklung, dem Physikunterricht, der Computerphysik und der Robotik.'
+					projectTitle.innerText = 'Projekte'
+					projectContent.innerHTML = 'Die meisten meiner kleineren Projekte können auf meinem <a id="a-github" href="https://github.com/jbierowiec" target="_blank">GitHub</a> profil eingesehen werden, ich habe jedoch an einigen größeren Projekten gearbeitet und arbeite derzeit daran. Sie können darauf zugreifen, indem Sie mich für meinen Lebenslauf direkt per E-Mail kontaktieren.'
+					contactTitle.innerText = 'Kontakt'
+					contactContent.innerHTML = 'Wenn Sie sich für die größeren Projekte interessieren, an denen ich gearbeitet habe und an denen ich arbeite, oder wenn Sie daran interessiert sind, mehr über mich, meine Fähigkeiten und meine Aktivitäten außerhalb der Wissenschaft zu erfahren, können Sie mich unter <a id="a-email" href="mailto:jbierowiec3@gmail.com">jbierowiec3@gmail.com</a> kontaktieren .'
+					break
+            	default:
+					aboutTitle.innerText = 'About me'
+              		aboutContent.innerText = 'I am currently a student at University studying Engineering Physics and Computer Science. My interests lie in Website Development, Physics Education, Computational Physics and Robotics.';
+					projectTitle.innerText = 'Projects'
+					projectContent.innerHTML = 'Most of my smaller projects can be viewed on my <a id="a-github" href="https://github.com/jbierowiec" target="_blank">GitHub</a> profile, however I have worked on and am currently working on a couple of larger projects. Those can be accessed by directly contacting me for my resume via email.'
+					contactTitle.innerText = 'Contact'
+					contactContent.innerHTML = 'If you are interested in the larger projects I have worked on and am working on, or if you are interested in finding out more about me, my skillset, and what I do outside of academia, I can be contacted at <a id="a-email" href="mailto:jbierowiec3@gmail.com">jbierowiec3@gmail.com</a>.'
+              		break
+          	}
+          	currentLanguage = language;
+          	previousContent = content;
+        }
+      
+        const enLink = document.querySelector('#en')
+        const plLink = document.querySelector('#pl')
+        const deLink = document.querySelector('#de')
+		const esLink = document.querySelector('#es')
+      
+        enLink.addEventListener('click', () => {
+          	if (currentLanguage !== 'en') {
+            	switchLanguage('en', previousContent)
+          	}
+        })
+      
+        esLink.addEventListener('click', () => {
+          	if (currentLanguage !== 'es') {
+            	switchLanguage('es', previousContent)
+		  	}
+        })
+      
+        deLink.addEventListener('click', () => {
+          	if (currentLanguage !== 'de') {
+            	switchLanguage('de', previousContent)
+          	}
+        })
+
+		plLink.addEventListener('click', () => {
+          	if (currentLanguage !== 'pl') {
+            	switchLanguage('pl', previousContent)
+          	}
+        })
+
+		function toggleMode() {
+  			const body = document.body;
+  			const modeBtn = document.getElementById('modebtn')
+  			const dropBtn = document.getElementById('dropbtn')
+			const dropdownContent = document.getElementById('dropdown-content')
+			const linkgithub = document.getElementById('a-github')
+			const linkemail = document.getElementById('a-email')
+			
+  			if (body.classList.contains('light-mode')) {
+    			body.classList.remove('light-mode')
+    			body.classList.add('dark-mode')
+				modeBtn.classList.add('dark-mode-btn')
+				dropBtn.classList.add('dark-mode-btn')
+				dropdownContent.classList.add('dark-mode-btn')
+				linkgithub.classList.add('dark-mode')
+				linkemail.classList.add('dark-mode')
+  			} else {
+    			body.classList.remove('dark-mode')
+    			body.classList.add('light-mode')
+				modeBtn.classList.remove('dark-mode-btn')
+				dropBtn.classList.remove('dark-mode-btn')
+				dropdownContent.classList.remove('dark-mode-btn')
+				linkgithub.classList.remove('dark-mode')
+				linkemail.classList.remove('dark-mode')	
+  			}
+		}
+
+		function toggleDropdown() {
+  			const dropdownContent = document.querySelector('.dropdown-content');
+  			dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+		}
+
+    </script>
+</body>
+</html>   
